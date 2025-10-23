@@ -30,10 +30,6 @@ namespace UnitBrains.Player
              
             }
         }
-            
-                
-                
-            
                 ///////////////////////////////////////
 
         public override Vector2Int GetNextStep()
@@ -51,6 +47,18 @@ namespace UnitBrains.Player
             {
                 result.RemoveAt(result.Count - 1);
             }
+            float lowestDistance = float.MaxValue;
+            Vector2Int nearestTarget = new Vector2Int();
+            foreach (var target in result)
+            {
+                if (DistanceToOwnBase(target) < lowestDistance)
+                {
+                    lowestDistance = DistanceToOwnBase(target);
+                    nearestTarget = target;
+                }
+            }
+            result.Clear();
+            result.Add(nearestTarget);
             return result;
             ///////////////////////////////////////
         }
