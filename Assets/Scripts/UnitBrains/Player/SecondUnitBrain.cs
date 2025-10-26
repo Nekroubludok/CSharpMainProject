@@ -43,10 +43,6 @@ namespace UnitBrains.Player
             // Homework 1.4 (1st block, 4rd module)
             ///////////////////////////////////////
             List<Vector2Int> result = GetReachableTargets();
-            while (result.Count > 1)
-            {
-                result.RemoveAt(result.Count - 1);
-            }
             float lowestDistance = float.MaxValue;
             Vector2Int nearestTarget = new Vector2Int();
             foreach (var target in result)
@@ -58,7 +54,10 @@ namespace UnitBrains.Player
                 }
             }
             result.Clear();
-            result.Add(nearestTarget);
+            if (result.Count > 0)
+            {
+                result.Add(nearestTarget);
+            }
             return result;
             ///////////////////////////////////////
         }
