@@ -53,9 +53,9 @@ namespace UnitBrains.Player
                     nearestTarget = target;
                 }
             }
-            result.Clear();
             if (result.Count > 0)
             {
+                result.Clear();
                 result.Add(nearestTarget);
             }
             return result;
